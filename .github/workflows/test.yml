@@ -22,8 +22,8 @@ jobs:
             key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}
         - name: Unit tests
           run: |
-            ./gradlew --build-cache -Pcoverage testFdroidDebugUnitTest --stacktrace
-            ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
+            ./gradlew -Pcoverage testDebugUnitTest --stacktrace
+            ./gradlew -Pcoverage jacocoTestReport --stacktrace
 
   unit-11:
       name: jdk 11
@@ -42,8 +42,8 @@ jobs:
             key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}
         - name: Unit tests
           run: |
-            ./gradlew --build-cache -Pcoverage testFdroidDebugUnitTest --stacktrace
-            ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
+            ./gradlew -Pcoverage testDebugUnitTest --stacktrace
+            ./gradlew -Pcoverage jacocoTestReport --stacktrace
 
   unit-15:
       name: jdk 15
