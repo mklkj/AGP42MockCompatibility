@@ -5,7 +5,27 @@ on:
     branches: [ master ]
 
 jobs:
-  unit-tests:
+  unit-8:
+      name: Unit tests
+      runs-on: ubuntu-latest
+      timeout-minutes: 10
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-java@v1
+          with:
+            java-version: 8
+        - uses: actions/cache@v2
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+            key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}
+        - name: Unit tests
+          run: |
+            ./gradlew --build-cache -Pcoverage testDebugUnitTest --stacktrace
+            ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
+
+  unit-11:
       name: Unit tests
       runs-on: ubuntu-latest
       timeout-minutes: 10
@@ -14,6 +34,26 @@ jobs:
         - uses: actions/setup-java@v1
           with:
             java-version: 11
+        - uses: actions/cache@v2
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+            key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}
+        - name: Unit tests
+          run: |
+            ./gradlew --build-cache -Pcoverage testDebugUnitTest --stacktrace
+            ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
+
+  unit-15:
+      name: Unit tests
+      runs-on: ubuntu-latest
+      timeout-minutes: 10
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-java@v1
+          with:
+            java-version: 15
         - uses: actions/cache@v2
           with:
             path: |
