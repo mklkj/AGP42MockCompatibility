@@ -6,7 +6,7 @@ on:
 
 jobs:
   unit-8:
-      name: Unit tests
+      name: jdk 8
       runs-on: ubuntu-latest
       timeout-minutes: 10
       steps:
@@ -26,7 +26,7 @@ jobs:
             ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
 
   unit-11:
-      name: Unit tests
+      name: jdk 11
       runs-on: ubuntu-latest
       timeout-minutes: 10
       steps:
@@ -46,7 +46,7 @@ jobs:
             ./gradlew --build-cache -Pcoverage jacocoTestReport --stacktrace
 
   unit-15:
-      name: Unit tests
+      name: jdk 15
       runs-on: ubuntu-latest
       timeout-minutes: 10
       steps:
